@@ -2,17 +2,34 @@
 
 
 
-$mysql = mysqli_connect('localhost', 'root', '123456', 'get_picture');
+$mysql = mysqli_connect('localhost', 'root', '', 'get_picture');
 
-$mysql_query = mysqli_query($mysql, "SELECT * FROM adress_pic O ;");
+$mysql_query = mysqli_query($mysql, "SELECT address_pic FROM pictures;");
 
 $br = '<br/>';
 
-$students = [];
+$pictures = [];
 
 while ($row = mysqli_fetch_assoc($mysql_query)) {
-    $students[] = $row;
+    $pictures[] = $row;
 }
+
+mysqli_close($mysql_query);
+
+
+foreach ($pictures as $picture) {
+    
+    foreach ($picture as $value) {
+        echo $value.' ';
+    }
+    echo $br;
+}
+ 
+
+
+
+
+
 
 ?>
 
@@ -49,47 +66,54 @@ while ($row = mysqli_fetch_assoc($mysql_query)) {
     <div class="container">
     <h1 class="h3 text-center my-4">Галерея созданная с помощью Bootstrap</h1>
     <div class="row">
-        <div class="col-lg-3 col-md-4 col-6 thumb">
-            <a data-fancybox="gallery" href="<?php echo $photo_cat; ?>">
-                <img class="img-fluid" src="<?php echo $photo_cat; ?>"  alt="Картинка кошки">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6 thumb">
-            <a data-fancybox="gallery" href="<?php echo $photo_monkey; ?>">
-                <img class="img-fluid" src="<?php echo $photo_monkey; ?>" alt="Картинка обезьяны">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6 thumb">
-            <a data-fancybox="gallery" href="<?php echo $photo_dog; ?>">
-                <img class="img-fluid" src="<?php echo $photo_dog; ?>" alt="Картинка собаки">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6 thumb">
-            <a data-fancybox="gallery" href="<?php echo $photo_man; ?>">
-                <img class="img-fluid" src="<?php echo $photo_man; ?>" alt="Картинка человека">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6 thumb">
-            <a data-fancybox="gallery" href="<?php echo $photo_bear; ?>">
-                <img class="img-fluid" src="<?php echo $photo_bear; ?>" alt="Картинка медведя">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6 thumb">
-            <a data-fancybox="gallery" href="<?php echo $photo_squirrel; ?>">
-                <img class="img-fluid" src="<?php echo $photo_squirrel; ?>" alt="Картинка белки">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6 thumb">
-            <a data-fancybox="gallery" href="<?php echo $photo_frog; ?>">
-                <img class="img-fluid" src="<?php echo $photo_frog; ?>" alt="Картинка лягушки">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6 thumb">
-            <a data-fancybox="gallery" href="<?php echo $photo_octopus; ?>">
-                <img class="img-fluid" src="<?php echo $photo_octopus; ?>" alt="Картинка осьминога">
-            </a>
-        </div>
+       
+       <?php foreach ($pictures as $picture) : ?>
+        <?php foreach ($picture as $value) :
+            $pic[] = $value;
+        ?>
         
+        <div class="col-lg-3 col-md-4 col-6 thumb">
+            <a data-fancybox="gallery" href="<?php echo $value; ?>">
+                <img class="img-fluid" src="<?php echo $value; ?>"  alt="Картинка кошки">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 thumb">
+            <a data-fancybox="gallery" href="<?php echo $value; ?> ?>">
+                <img class="img-fluid" src="<?php echo $value; ?> ?>" alt="Картинка обезьяны">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 thumb">
+            <a data-fancybox="gallery" href="<?php echo $value; ?> ?>">
+                <img class="img-fluid" src="<?php echo $value; ?> ?>" alt="Картинка собаки">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 thumb">
+            <a data-fancybox="gallery" href="<?php echo $value; ?> ?>">
+                <img class="img-fluid" src="<?php echo $value; ?> ?>" alt="Картинка человека">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 thumb">
+            <a data-fancybox="gallery" href="<?php echo $value; ?> ?>">
+                <img class="img-fluid" src="<?php echo $value; ?> ?>" alt="Картинка медведя">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 thumb">
+            <a data-fancybox="gallery" href="<?php echo $value; ?> ?>">
+                <img class="img-fluid" src="<?php echo $value; ?> ?>" alt="Картинка белки">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 thumb">
+            <a data-fancybox="gallery" href="<?php echo $value; ?> ?>">
+                <img class="img-fluid" src="<?php echo $value; ?> ?>" alt="Картинка лягушки">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 thumb">
+            <a data-fancybox="gallery" href="<?php echo $value; ?> ?>">
+                <img class="img-fluid" src="<?php echo $value; ?> ?>" alt="Картинка осьминога">
+            </a>
+        </div>
+        <?php endforeach; ?>
+        <?php endforeach; ?>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
